@@ -1,0 +1,37 @@
+producer:  Employee Producer Service with Eureka Registration
+appliction.properties:
+server.port=9082
+eureka.client.serviceUrl.defaultZone=http://localhost:8090/eureka
+
+bootstrap.properties :
+
+spring.application.name=employee-producer
+
+note:
+ bootstrap.properties file nameing conversion show in eureka server page call registery service with name from client ..
+
+# localhost:9082/employee  // producer api
+
+Spring.io - add depedency - Eureka Discovery Client
+*********main classs-  @EnableDiscoveryClient
+-----------------------------
+consumer:
+appliction.properties:
+server.port=9081
+eureka.client.serviceUrl.defaultZone=http://localhost:8090/eureka
+
+bootstrap.properties :
+
+spring.application.name=employee-consumer
+
+Spring.io - add depedency - Eureka Discovery Client
+within -Controller class--
+@Autowired
+	private DiscoveryClient discoveryClient;
+---------------------------
+Eureka-server:  // add depedency -eureka server
+server.port=8090
+main classs-  @EnableEurekaServer
+
+
+https://www.baeldung.com/spring-cloud-bootstrapping
